@@ -1,0 +1,12 @@
+{
+    "name": "robin/composer_test",
+    "authors": [
+        {
+            "name": "Robearr",
+            "email": "54249226+Robearr@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "fakerphp/faker": "^1.13"
+    }
+}

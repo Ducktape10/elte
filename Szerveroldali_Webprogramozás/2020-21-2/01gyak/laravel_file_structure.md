@@ -1,0 +1,69 @@
+## File struktúra
+-  Nagyon nagy vonalakban a projekt szerkezete a következő:
+   - **app**:
+     - Gyakorlatilag az alkalmazás kódjának a magját tartalmazza
+       - **app/Models**:
+         - létre fogunk hozni modelleket, ezek ebben a mappában találhatók
+       - **app/Http**
+         - Mondhatni itt dolgozzuk fel szinte az összes kérést, ami az alkalmazáshoz érkezik a kliensektől
+         - **app/Http/Controllers**
+           - Különböző vezérlőlogikák, amiket hozzá tudunk rendelni az egyes végpontokhoz
+         - **app/Http/Middleware**
+           - Amikor bejön egy kérés, middleware-k sora hajtódik végre, tehát ez úgymond egy köztes logika.
+           - Például: megvan a middleware-k sorrendje, ha bejön egy kérés, azt a web middleware veszi át, majd utána hajtódik végre a végpont mögött rejlő vezérlési logika. Azonban ha beállítunk egy autentikációt, akkor a web middleware után egy auth middleware hajtódik végre. Itt pedig ha nem sikerül a hitelesítés, akkor pl. átirányítja a felhasználót a login oldalra, nem pedig a végponthoz tartozó vezérlés következik.
+        - **app/Http/Requests**
+          -  Amikor form-okat (űrlapokat) küld el a felhasználó, akkor létre lehet hozni ilyen request objektumokat, amik egy-egy ilyen form logikáját le tudják kezelni. Ezek találhatók itt.
+   - **bootstrap**
+     - Ez a félév során számunkra érdektelen, ha bele is kell valaha nyúlni, akkor azt csak indokolt esetben és körültekintően érdemes megtenni.
+     - Itt található az app.php fájl, ami kvázi "felállítja" (bootstrap-eli, bár erre nincs nagyon egyszavas értelmes magyar fordítás) az alkalmazást, illetve a gyorsítótárazás is itt van kezelve, ami arra szolgál, hogy segítsen optimalizálni a teljesítményt
+   - **config**
+     - Elég egyértelmű a neve alapján, és pontosan arra is való, amit az ember sejtene mögötte: itt van az alkalmazás konfigurációja
+     - Elég érthetően kategóriákra van bontva a fájlok szerint
+   - **database**
+     - Ennek is egyértelmű a neve, az adatbázissal kapcsolatos dolgokat tartalmazza
+       - **factories**:
+         - modell"gyárak", egy megadott logika szerint generálhatunk modelleket
+       - **migrations**:
+         - itt írjuk le az adatbázis szerkezetét, fontos, hogy a fájlok neve előtt van egy timestamp (időbélyeg), a Laravel eszerint rendezi sorba őket
+         - felfogható az adatbázis szerkezethez tartozó "verziókezelésként" is
+       - **seeders**:
+         - A seeder arra való, hogy feltöltse az adatbázist adatokkal
+         - Az adatbázist a migration adja meg, az egyes adatokat a factory, szóval a factory-kat tudjuk itt hívogatni majd
+    - **public**
+      -  Itt található az index.php, ami az összes bejövő kérés belépési pontja, valamint meghatározza az alkalmazás autoload-ját
+      - Ezen felül itt találhatók az "asset-ek": képek, JS és CSS fájlok
+         - ha npm-et használunk és pl npm segítségével töltjük le a Bootstrap-et, a Laravel Mix build kimenetei is ide kerülnek tipikusan JS és CSS fájlok formájában
+      - Ha egy hostingra töltjük fel az appot, ezt a mappát kell az úgynevezett *www* vagy *public_html* mappába tenni, és az alkalmazás többi részét egy szinttel feljebb
+    - **resources**
+      - Ez tartalmazza a css és js fájlok "natív" verzióit (a public mappába ezeknek a build-je kerül általában), a nyelvi fájlokat (lang), valamint a **view-okat** (az MVC logikából a V), ezekben fogjuk létrehozni a Blade template-ket
+   - **routes**
+     - Meghatározza az összes útvonalat, ami az alkalmazáshoz tartozik
+       - **web.php**
+         - A `RouteServiceProvider`-re épül, ami biztosít session-t (munkamenetet), CSRF védelmet (OWASP top 10-ben is benne van, és EA anyag is lesz), valamint cookie titkosítást is
+         - Ha az alkalmazás nem használ állapotmentes (stateless) RESTful API-t (márpedig a mienk nem fog a félévben), akkor kb. ezzel a fájllal le is fedtük az összes route-ot.
+       - **api.php**:
+         - Szintén a `RouteServiceProvider`-re épül, viszont ezek stateless (állapotmentes) útvonalak, ezért tokennel kell hitelesíteni őket. Ezt a fájlt kell(ene) használni, ha REST API-t készítünk és ahhoz veszünk fel route-okat
+        - **console.php**
+          - Gyakorlatilag artisan parancsokat lehet felvenni, pl. `php artisan valami`
+        -  **channels.php**
+           - Ez akkor lényeges, ha használunk valamilyen event broadcasting-ot, gyakorlatilag ezzel lehet live chatet, játékot stb. csinálni.
+    - **storage**
+      - Ez a könyvtár elég sok minden tartalmaz
+      - Például itt vannak a naplófájlok, illetve minden olyan fájl, amit az alkalmazás hoz létre / generál ki
+      - Alapvetően három almappára van bontva: *app, framework, logs* (alkalmazás és framework által generált dolgok, valamint a generált naplók)
+      - A **storage/app/public** mappát fogjuk használni, ide berakhatók a felhasználókhoz köthető fájlok (pl. egy kép, amit feltölt valamihez). Ehhez a mappához lehet készíteni egy *symlink*-et (symbolic link), hogy hozzáférhető legyen a public mappából is, erre lesz majd a `php artisan storage:link` parancs, de ezt majd később... lehet olyat is csinálni, hogy egy végpont különböző fájlműveletekkel lekérjen innen célzottan egy fájlt és azt visszaadja, és akkor nem kell symlink. Legfeljebb ha nem létezik a lekérni kívánt fájl, akkor valami default oldalra irányít, vagy 404 választ ad.
+    - **tests**
+      - Itt találhatóak az automatikusan futtatható unit testek
+    - **vendor**
+      - Itt találhatóak a Composeres csomagok, amiket a *Composer* a távoli szerverről töltött le a *composer.json* fájl alapján.
+    - **node_modules**
+      - Itt találhatóak az npm-es csomagok, amiket a *Node Package Manager* (röviden *npm*) a távoli szerverről töltött le a *package.json* fájl alapján.
+  - **.env**:
+    - environment, azaz környezeti fájl, leírja, hogy az alkalmazáshoz egy adott környezetben milyen konfiguráció tartozik (pl. más a fejlesztési környezet és az a környezet ahol az alkalmazás majd ténylegesen fut, más az adatbázis kapcsolódás, stb.)
+    - Biztonsági okokból ez nincs verziókezelve a git által (a .gitignore része)
+  - **.env.example**
+    - Egy jó kiindulópont, ha *.env* fájlt akarunk csinálni, csak lemásoljuk és átnevezzük *.env*-nek, az összes basic dolog benne van
+  - **composer.json**, **package.json**, illetve a lock fájlok:
+    - Ezek leírják, hogy a Composer és az npm milyen csomagokat telepítsen, a lock fájlokat csak ehhez generálják (a lock file csak annyit csinál, hogy az adott csomag milyen verziójú alcsomagokat követel meg, és mivel generált fájl, ezért nem szabad átírni)
+  - **.gitattributes**, **.gitignore**
+    - Git-hez tartozó beállításokat, kizárásokat tartalmazó fájlok
