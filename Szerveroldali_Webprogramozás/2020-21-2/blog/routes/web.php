@@ -24,3 +24,21 @@ Route::get('/test-bs', function () {
 Route::get('/new-post', function () {
     return view('new-post');
 });
+Route::get('/category', function () {
+    return view('category');
+});
+Route::get('/new-category', function () {
+    return view('new-category');
+});
+Route::get('/post', function () {
+    return view('post');
+});
+Route::get('/profile-update', function () {
+    return view('profile-update');
+});
+Route::get('/profile', function () {
+    return view('profile');
+});
+Route::get('/rules', function () {
+    return view('rules');
+});
