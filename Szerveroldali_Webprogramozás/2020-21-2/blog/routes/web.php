@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Controllers
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,14 +25,14 @@ Route::get('/test-bs', function () {
     return view('test');
 });
 
-Route::get('/new-post', function () {
-    return view('new-post');
-});
+Route::get('/new-post', [PostController::class, 'newPostIndex'])->name('new-post');
+Route::post('/new-post', [PostController::class, 'createNewPost'])->name('create-new-post');
+
+Route::get('/new-category', [CategoryController::class, 'newCategoryIndex'])->name('new-category');
+Route::post('/new-category', [CategoryController::class, 'createNewCategory'])->name('create-new-category');
+
 Route::get('/category', function () {
     return view('category');
-});
-Route::get('/new-category', function () {
-    return view('new-category');
 });
 Route::get('/post', function () {
     return view('post');

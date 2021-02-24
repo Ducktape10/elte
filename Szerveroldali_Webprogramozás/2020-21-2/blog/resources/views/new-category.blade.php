@@ -11,11 +11,17 @@
             <a href="index.html"><i class="fas fa-long-arrow-alt-left"></i> Vissza a bejegyzésekhez</a>
         </div>
 
-        <form>
+        <form action="{{ route('create-new-category') }}" method="POST">
+        @csrf
             <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label">Név*</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="name" placeholder="Kategória neve">
+                    @error('name')
+                        {{-- <div class="invalid-feedback"> --}}
+                            {{ $message }}
+                        {{-- </div> --}}
+                    @enderror
                 </div>
             </div>
             <div class="form-group row">
@@ -71,6 +77,12 @@
                             <span class="badge badge-dark">Dark</span>
                         </label>
                     </div>
+
+                    @error('style')
+                        {{-- <div class="invalid-feedback"> --}}
+                            {{ $message }}
+                        {{-- </div> --}}
+                    @enderror
                 </div>
             </div>
             <div class="text-center">
