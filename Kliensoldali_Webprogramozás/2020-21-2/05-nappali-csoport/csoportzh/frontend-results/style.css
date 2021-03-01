@@ -1,0 +1,5 @@
+.max-width {
+  height: 90%;
+  width: 80%;
+  overflow-y: scroll;
+}

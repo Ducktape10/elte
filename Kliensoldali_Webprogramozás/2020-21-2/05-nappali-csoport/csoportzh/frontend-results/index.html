@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.2/dist/paper.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Frontend results</title>
+</head>
+
+<body>
+
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible" checked>
+    <label for="collapsible1">Táblázat megnézése/elrejtése</label>
+    <div class="collapsible-body">
+      <table class="table-hover">
+        <thead>
+          <tr>
+            <td>Név</td>
+            <td>Pontszám</td>
+            <td>Sikerült?</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-success">
+            <td>Éliás</td>
+            <td>15</td>
+            <td>Igen</td>
+          </tr>
+          <tr class="text-danger">
+            <td>Orsolya</td>
+            <td>7</td>
+            <td>Nem</td>
+          </tr>
+          <tr class="text-danger">
+            <td>Gizella</td>
+            <td>2</td>
+            <td>Nem</td>
+          </tr>
+          <tr class="text-danger">
+            <td>Etele</td>
+            <td>2</td>
+            <td>Nem</td>
+          </tr>
+          <tr class="text-success">
+            <td>Luca</td>
+            <td>20</td>
+            <td>Igen</td>
+          </tr>
+          <tr class="text-danger">
+            <td>Mártuska</td>
+            <td>5</td>
+            <td>Nem</td>
+          </tr>
+          <tr class="text-danger">
+            <td>Jenci</td>
+            <td>0</td>
+            <td>Nem</td>
+          </tr>
+          <tr class="text-success">
+            <td>Katalin</td>
+            <td>14</td>
+            <td>Igen</td>
+          </tr>
+          <tr class="text-success">
+            <td>Krisztián</td>
+            <td>11</td>
+            <td>Igen</td>
+          </tr>
+          <tr class="text-success">
+            <td>Endre</td>
+            <td>17</td>
+            <td>Igen</td>
+          </tr>
+          <tr class="text-success">
+            <td>Tiborc</td>
+            <td>19</td>
+            <td>Igen</td>
+          </tr>
+          <tr class="text-success">
+            <td>Sára</td>
+            <td>13</td>
+            <td>Igen</td>
+          </tr>
+          <tr class="text-danger">
+            <td>Nóra</td>
+            <td>2</td>
+            <td>Nem</td>
+          </tr>
+          <tr class="text-success">
+            <td>Marián</td>
+            <td>8</td>
+            <td>Igen</td>
+          </tr>
+          <tr class="text-success">
+            <td>Ada</td>
+            <td>16</td>
+            <td>Igen</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row flex-spaces child-borders">
+    <label class="paper-btn margin" for="modal-1">Összesítés megtekintése</label>
+  </div>
+  <input class="modal-state" id="modal-1" type="checkbox">
+  <div class="modal red">
+    <label class="modal-bg" for="modal-1"></label>
+    <div class="modal-body max-width">
+      <label class="btn-close" for="modal-1">X</label>
+      <h4 class="modal-title">Összesítés</h4>
+      <p class="modal-text"><canvas></canvas></p>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+  <script src="results.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
