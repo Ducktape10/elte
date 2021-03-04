@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dialog</title>
+</head>
+<body>
+
+  <custom-dialog data-is-visible="false"></custom-dialog>
+
+  <template>
+    <!-- ez nem túl szép, de talán a legegyszerűbb -->
+    <style>
+      .dialog {
+        background-color: red;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+      }
+    </style>
+
+    <div class="dialog" style="display: none">
+      <h3>Hello there</h3>
+      <input type="text" value="General Kenobi" disabled>
+      <br>
+      <button>Answer</button>
+    </div>
+  </template>
+
+    <script src="index.js"></script>
+</body>
+</html>
