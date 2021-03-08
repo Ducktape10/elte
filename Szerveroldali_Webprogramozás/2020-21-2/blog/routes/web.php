@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // Controllers
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,7 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'index'])->name('name');
 
 Route::get('/test-bs', function () {
     return view('test');
@@ -34,9 +33,9 @@ Route::post('/new-category', [CategoryController::class, 'createNewCategory'])->
 Route::get('/category', function () {
     return view('category');
 });
-Route::get('/post', function () {
-    return view('post');
-});
+
+Route::get('/post/{id}', [PostController::class, 'viewPost'])->name('view-post');
+
 Route::get('/profile-update', function () {
     return view('profile-update');
 });

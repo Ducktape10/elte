@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-12 col-md-8">
-                <h1>Bejegyzés címe</h1>
+                <h1>{{$post->title}}</h1>
 
                 <div class="d-flex my-1 text-secondary">
                     <span class="mr-2">
@@ -15,7 +15,7 @@
                     </span>
                     <span class="mr-2">
                         <i class="far fa-calendar-alt"></i>
-                        <span>2021. 02. 10.</span>
+                        <span>{{$post->created_at}}</span>
                     </span>
                 </div>
 
@@ -44,21 +44,7 @@
         </div>
 
         <div class="mt-3">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Pharetra pharetra massa massa ultricies mi quis hendrerit dolor. Tristique
-                sollicitudin nibh sit amet. Vivamus at augue eget arcu dictum varius duis at consectetur. Et odio
-                pellentesque diam volutpat commodo. Et netus et malesuada fames ac. Elementum eu facilisis sed odio.
-                Varius quam quisque id diam vel quam elementum. A diam sollicitudin tempor id eu. Lobortis scelerisque
-                fermentum dui faucibus in ornare quam viverra. Turpis massa tincidunt dui ut ornare lectus sit amet.
-                Varius vel pharetra vel turpis nunc eget. Diam maecenas ultricies mi eget mauris pharetra et ultrices
-                neque. Augue eget arcu dictum varius duis at consectetur. Volutpat diam ut venenatis tellus in metus
-                vulputate eu scelerisque. Ornare arcu odio ut sem nulla pharetra. Nulla aliquet porttitor lacus luctus
-                accumsan tortor posuere. At quis risus sed vulputate odio ut enim. Nisl vel pretium lectus quam id. Ut
-                porttitor leo a diam sollicitudin tempor. Aliquam purus sit amet luctus venenatis lectus. Amet nulla
-                facilisi morbi tempus. Egestas dui id ornare arcu odio ut. Lobortis scelerisque fermentum dui faucibus
-                in. Erat velit scelerisque in dictum non consectetur a erat nam. Aliquet bibendum enim facilisis gravida
-                neque convallis. Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Lectus magna fringilla
-                urna porttitor rhoncus dolor purus non. Aliquet nec ullamcorper sit amet risus nullam eget felis.</p>
+            <p>{{$post->text}}</p>
 
             <div class="attachment mb-3">
                 <h5>Csatolmány</h5>

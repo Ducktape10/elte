@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Post;
+
 class PostController extends Controller {
   public function newPostIndex() {
     return view('new-post');
@@ -29,5 +31,11 @@ class PostController extends Controller {
     ]);
 
     echo(json_encode($data));
+  }
+
+  public function viewPost($id) {
+    $post = Post::find($id);
+
+    return view('post', ['post' => $post]);
   }
 }
