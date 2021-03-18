@@ -7,18 +7,18 @@ const SearchView = () => {
 
   return (
     <div className="ui container">
-      <div class="ui fluid icon input">
+      <div className="ui fluid icon input">
         <input type="text" placeholder="Search for an artist or title..." />
-        <i class="search icon"></i>
+        <i className="search icon"></i>
       </div>
       <div className="ui segment">
         <h2>Results</h2>
 
-        <div class="ui active inverted dimmer">
-          <div class="ui large elastic text loader">Loading</div>
+        <div className="ui active inverted dimmer">
+          <div className="ui large elastic text loader">Loading</div>
         </div>
 
-        <table class="ui celled striped table">
+        <table className="ui celled striped table">
           <thead>
             <tr>
               <th>Artist</th>
@@ -28,7 +28,7 @@ const SearchView = () => {
           </thead>
           <tbody>
             {songs.map(
-              (song) => <SongTableRow author={song.header} songName={song.description} />
+              (song, i) => <SongTableRow author={song.header} songName={song.description} key={`song-${i}`} />
             )}
           </tbody>
         </table>

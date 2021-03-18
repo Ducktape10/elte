@@ -1,24 +1,24 @@
 const Modal = () => {
   return (
-    <div class="ui modal">
-      <i class="close icon"></i>
-      <div class="header">Add new Playlist</div>
-      <div class="image content">
-        <div class="description">
-          <div class="ui form">
+    <div className="ui modal">
+      <i className="close icon"></i>
+      <div className="header">Add new Playlist</div>
+      <div className="image content">
+        <div className="description">
+          <div className="ui form">
           {/* itt lehetne akár a Field komponens is ¯\_(ツ)_/¯  */}
-            <div class="field">
+            <div className="field">
               <label>Name</label>
               <input required type="text" placeholder="My Playlist" />
             </div>
           </div>
         </div>
       </div>
-      <div class="actions">
-        <div class="ui black deny button">Cancel</div>
-        <div class="ui positive right labeled icon button">
+      <div className="actions">
+        <div className="ui black deny button">Cancel</div>
+        <div className="ui positive right labeled icon button">
           Add
-          <i class="plus icon"></i>
+          <i className="plus icon"></i>
         </div>
       </div>
     </div>

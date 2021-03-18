@@ -4,11 +4,11 @@ const SongInfo = ({ song, image, spotifyLink, lyricsLink, chordsLink }) => {
     <div className="ui segment">
       <div className="ui items">
         <div className="item">
-          <div class="image">
+          <div className="image">
             <img src={image} alt="TMP"/>
           </div>
-          <div class="content">
-            <a class="header" href="TMP">{song.name}</a>
+          <div className="content">
+            <a className="header" href="TMP">{song.name}</a>
             <div className="meta"><span>{song.author}</span><span>{song.length}</span></div>
                 <div className="extra">
                   <a  href={spotifyLink} className="ui button tiny green button" target="_blank">
@@ -16,11 +16,11 @@ const SongInfo = ({ song, image, spotifyLink, lyricsLink, chordsLink }) => {
                     Listen on Spotify
                   </a>
                   <a href={lyricsLink} className="ui button tiny teal button" target="_blank">
-                    <i class="microphone icon"></i>
+                    <i className="microphone icon"></i>
                     Show lyrics
                   </a>
                   <a href={chordsLink} className="ui button tiny orange button" target="_blank">
-                    <i class="guitar icon"></i>
+                    <i className="guitar icon"></i>
                     Show chords
                   </a>
             </div>

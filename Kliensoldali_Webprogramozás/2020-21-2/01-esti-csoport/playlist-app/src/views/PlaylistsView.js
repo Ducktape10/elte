@@ -31,23 +31,23 @@ const PlaylistView = () => {
           <h3>Playlists</h3>
           <div className="ui very relaxed selection list">
             {genres.map(
-              (playlistItem) => <PlaylistItem header={playlistItem.header} description={playlistItem.description} />
+              (playlistItem, i) => <PlaylistItem header={playlistItem.header} description={playlistItem.description} key={`playlistItem-${i}`} />
             )}
           </div>
         </div>
       </div>
 
-      <div class="item" id="newPlaylist">
-        <i class="large green plus middle aligned icon"></i>
-        <div class="content">
-          <a class="header" href="TMP">New</a>
-          <div class="description">Create a new playlist</div>
+      <div className="item" id="newPlaylist">
+        <i className="large green plus middle aligned icon"></i>
+        <div className="content">
+          <a className="header" href="TMP">New</a>
+          <div className="description">Create a new playlist</div>
         </div>
       </div>
 
       <Playlists genre="Classics" />
 
-      <div class="ui divider"></div>
+      <div className="ui divider"></div>
       <SongInfo
         song={{
           name: 'It\'s my life',

@@ -11,17 +11,17 @@ const IndexView = () => {
             <div className="ui form">
               <Field label='Username' icon='user'/>
               <Field label='Password' icon='lock'/>
-              <div class="ui blue submit button">Login</div>
+              <div className="ui blue submit button">Login</div>
             </div>
           </div>
-          <div class="middle aligned column">
-            <div class="ui big button">
-              <i class="signup icon"></i>
+          <div className="middle aligned column">
+            <div className="ui big button">
+              <i className="signup icon"></i>
               Sign Up
             </div>
           </div>
         </div>
-        <div class="ui vertical divider">Or</div>
+        <div className="ui vertical divider">Or</div>
       </div>
     </div>
   );

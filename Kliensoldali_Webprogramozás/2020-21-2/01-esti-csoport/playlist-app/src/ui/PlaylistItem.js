@@ -1,10 +1,10 @@
-const PlaylistItem = ({ icon, header, description }) => {
+const PlaylistItem = ({ icon, header, description, isActive, handleClick }) => {
   return (
-    <div class="item">
-      <i class={`large ${icon} middle aligned icon`}></i>
-      <div class="content">
-        <a class="header" href="TMP">{header}</a>
-        <div class="description">{description}</div>
+    <div className={`item ${isActive ? 'active' : ''}`} onClick={handleClick}>
+      <i className={`large ${icon} middle aligned icon`}></i>
+      <div className="content">
+        <a className="header">{header}</a>
+        <div className="description">{description}</div>
       </div>
     </div>
   );
