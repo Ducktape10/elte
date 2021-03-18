@@ -1,15 +1,13 @@
-import Field from "./ui/Field";
-import Navbar from "./ui/Navbar";
+import IndexView from "./views/IndexView";
+import PlaylistView from "./views/PlaylistsView";
+import SearchView from "./views/SearchView";
 
 function App() {
   return (
     <div>
-      <Navbar />
-
-      <div className='ui form'>
-        <Field label='Username' icon='user'/>
-        <Field label='Password' icon='lock'/>
-      </div>
+      {/* <IndexView /> */}
+      <PlaylistView />
+      {/* <SearchView /> */}
     </div>
   );
 }
