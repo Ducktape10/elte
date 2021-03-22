@@ -1,15 +1,27 @@
-import Dropdown from "./Dropdown"
+import NavItem from "./NavItem"
 
 const Navbar = () => {
+
+  // const navItems = [
+  //   {
+  //     text: 'Home',
+  //     href: 'index.html',
+  //     icon: 'home'
+  //   },
+  //   {
+  //     text: 'My Playlists',
+  //     href: 'playlists.html',
+  //     icon: 'headphones'
+  //   },
+  // ];
+
   return (
     <nav className='ui secondary menu'>
-      <img src='assets/logo.png' alt='' />
-      <a class='active item' href='index.html'><i class='home icon'></i> Home</a>
-      <a class='item' href='playlists.html'><i class='headphones icon'></i> My Playlists</a>
-      <a class='item' href='tracks.html'><i class='music icon'></i> Tracks</a>
-      <a class='item' href='search.html'><i class='search icon'></i> Search</a>
-
-      <Dropdown />
+      {/* {navItems.map(
+        (navItem, i) => <NavItem href={navItem.href} text={navItem.text} icon={navItem.icon} key={`navItem-${i}`}/>
+      )} */}
+      <NavItem href='index.html' text='Home' icon='home' />
+      <NavItem href='playlists.html' text='My Playlists' icon='headphones' />
     </nav>
   );
 };
