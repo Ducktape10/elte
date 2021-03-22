@@ -12,7 +12,7 @@ class HomeController extends Controller {
     public function index() {
         $user_count = User::count();
 
-        $posts = Post::all();
+        $posts = Post::paginate(10);
 
         return view('home', [
             'user_count' => $user_count,

@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 
 class PostController extends Controller {
+
+  // public function __construct() {
+  //   $this->middleware('auth');
+  // }
+
   public function newPostIndex() {
     return view('new-post');
   }

@@ -24,7 +24,7 @@ Route::get('/test-bs', function () {
     return view('test');
 });
 
-Route::get('/new-post', [PostController::class, 'newPostIndex'])->name('new-post');
+Route::get('/new-post', [PostController::class, 'newPostIndex'])->name('new-post')->middleware('auth');
 Route::post('/new-post', [PostController::class, 'createNewPost'])->name('create-new-post');
 
 Route::get('/new-category', [CategoryController::class, 'newCategoryIndex'])->name('new-category');
@@ -45,3 +45,6 @@ Route::get('/profile', function () {
 Route::get('/rules', function () {
     return view('rules');
 });
+
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout-user');

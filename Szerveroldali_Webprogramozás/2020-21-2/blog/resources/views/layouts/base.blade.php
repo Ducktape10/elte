@@ -35,6 +35,23 @@
                     </li>
                 </ul>
             </div>
+
+            @if (Auth::check())
+                Regisztrálás
+
+                {{Auth::user()->name}}
+                {{-- {{Auth::user()['name']}} --}}
+
+            @endif
+
+            {{-- <form method="POST" action="{{ route('logout') }}">
+            @csrf
+                <button type="submit">Kijelentkezés</button>
+            </form> --}}
+
+            <a href="{{route('logout-user')}}">Kijelentkezés</a>
+
+
         </nav>
     </header>
 
