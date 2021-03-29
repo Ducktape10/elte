@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 const NavItem = ({ href, icon, text }) => {
   return (
-    <a className='item' href={href}>
+    <Link to={href} className='item'>
       <i className={`${icon} icon`}></i>
       {text}
-    </a>
+    </Link>
   );
 };
 

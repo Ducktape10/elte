@@ -1,12 +1,19 @@
+import { useContext, useEffect } from "react";
+import { CounterContext } from "../example/CounterProvider";
 import SongTableRow from "../ui/SongTableRow";
 import { playlists } from "../utils/playlists";
 
 const SearchView = () => {
-
+  // const { counter, increaseCounter } = useContext(CounterContext);
   const songs = playlists.Classics;
+
+  // useEffect(() => {
+  //   console.log(counter);
+  // }, [counter]);
 
   return (
     <div className="ui container">
+    {/* <button onClick={increaseCounter}>+1</button> */}
       <div className="ui fluid icon input">
         <input type="text" placeholder="Search for an artist or title..." />
         <i className="search icon"></i>

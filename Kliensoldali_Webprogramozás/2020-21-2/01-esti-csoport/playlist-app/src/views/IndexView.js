@@ -1,8 +1,17 @@
+import { useContext, useEffect } from "react";
+import { CounterContext } from "../example/CounterProvider";
 import Field from "../ui/Field"
 
 const IndexView = () => {
+  // const { counter, increaseCounter } = useContext(CounterContext);
+
+  // useEffect(() => {
+  //   console.log(counter);
+  // }, [counter]);
+
   return (
     <div className="ui center aligned container">
+    {/* <button onClick={increaseCounter}>+1</button> */}
       <h1>My Playlist App</h1>
       <p>Welcome to MPA. To use this awesome piece of software you must log in.</p>
       <div className="ui segment">

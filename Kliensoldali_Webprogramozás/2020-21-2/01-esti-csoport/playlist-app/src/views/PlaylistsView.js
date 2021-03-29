@@ -1,37 +1,34 @@
+import { useContext, useEffect, useState } from "react";
+import { CounterContext } from "../example/CounterProvider";
 import Modal from "../ui/Modal";
 import PlaylistItem from "../ui/PlaylistItem";
 import Playlists from "../ui/PlayLists";
 import SongInfo from "../ui/SongInfo";
+import { genres } from "../utils/genres";
 
 const PlaylistView = () => {
-  //! TMP
-  const genres = [
-    {
-      header: 'Heavy Metal',
-      description: '5 songs',
-      icon: 'compact disc'
-    },
-    {
-      header: 'Classics',
-      description: '4 songs',
-      icon: 'compact disc'
-    },
-    {
-      header: 'Movie Soundtracks',
-      description: '9 songs',
-      icon: 'compact disc'
-    },
-  ];
+  // const { counter, increaseCounter } = useContext(CounterContext);
+  const [theGenres, setTheGenres] = useState([]);
+
+  useEffect(() => {
+    const theGenres2 = genres.filter(
+      (genre) => genre.description >= 3
+    );
+
+    setTheGenres(theGenres2);
+    // console.log(counter);
+  }, [/* counter */]);
 
   return (
     <div className="ui container">
+    {/* <button onClick={increaseCounter}>+1</button> */}
       <h1>My Playlists</h1>
       <div className="ui stackable two column grid">
         <div className="ui six wide column">
           <h3>Playlists</h3>
           <div className="ui very relaxed selection list">
-            {genres.map(
-              (playlistItem, i) => <PlaylistItem header={playlistItem.header} description={playlistItem.description} key={`playlistItem-${i}`} />
+            {theGenres.map(
+              (playlistItem, i) => <PlaylistItem header={playlistItem.header} description={playlistItem.description} icon={playlistItem.icon} key={`playlistItem-${i}`} />
             )}
           </div>
         </div>
