@@ -11,7 +11,7 @@ const SongInfo = ({ song, image, spotifyLink, lyricsLink, chordsLink }) => {
             <a className="header" href="TMP">{song.name}</a>
             <div className="meta"><span>{song.author}</span><span>{song.length}</span></div>
                 <div className="extra">
-                  <a  href={spotifyLink} className="ui button tiny green button" target="_blank">
+                  <a href={spotifyLink} className="ui button tiny green button" target="_blank">
                     <i className="spotify icon"></i>
                     Listen on Spotify
                   </a>

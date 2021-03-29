@@ -31,7 +31,7 @@ const PlaylistView = () => {
           <h3>Playlists</h3>
           <div className="ui very relaxed selection list">
             {genres.map(
-              (playlistItem) => <PlaylistItem header={playlistItem.header} description={playlistItem.description} />
+              (playlistItem, i) => <PlaylistItem header={playlistItem.header} description={playlistItem.description} key={`playlistitem-${i}`} />
             )}
           </div>
         </div>
