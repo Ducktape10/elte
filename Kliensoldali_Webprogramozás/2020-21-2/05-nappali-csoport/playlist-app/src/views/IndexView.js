@@ -1,6 +1,15 @@
+import { useContext, useEffect } from "react";
+import { CounterButtonContext } from "../providers/CounterButtonProvider";
 import Field from "../ui/Field"
 
 const IndexView = () => {
+
+  const { count, increaseCount } = useContext(CounterButtonContext);
+
+  useEffect(() => {
+    console.log(count);
+  }, [count]);
+
   return (
     <div className="ui center aligned container">
       <h1>My Playlist App</h1>

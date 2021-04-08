@@ -20,8 +20,9 @@ const Navbar = () => {
       {/* {navItems.map(
         (navItem, i) => <NavItem href={navItem.href} text={navItem.text} icon={navItem.icon} key={`navItem-${i}`}/>
       )} */}
-      <NavItem href='index.html' text='Home' icon='home' />
-      <NavItem href='playlists.html' text='My Playlists' icon='headphones' />
+      <NavItem href='/' text='Home' icon='home' />
+      <NavItem href='/playlists' text='My Playlists' icon='headphones' />
+      <NavItem href='/search' text='Search' icon='search' />
     </nav>
   );
 };

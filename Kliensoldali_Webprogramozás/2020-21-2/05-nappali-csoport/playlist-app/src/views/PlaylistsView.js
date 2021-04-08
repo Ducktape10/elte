@@ -1,30 +1,42 @@
+import { useContext, useEffect, useState } from "react";
+import { CounterButtonContext } from "../providers/CounterButtonProvider";
 import Modal from "../ui/Modal";
 import PlaylistItem from "../ui/PlaylistItem";
 import Playlists from "../ui/PlayLists";
 import SongInfo from "../ui/SongInfo";
+import { theGenres } from '../utils/genres';
 
 const PlaylistView = () => {
-  //! TMP
-  const genres = [
-    {
-      header: 'Heavy Metal',
-      description: '5 songs',
-      icon: 'compact disc'
-    },
-    {
-      header: 'Classics',
-      description: '4 songs',
-      icon: 'compact disc'
-    },
-    {
-      header: 'Movie Soundtracks',
-      description: '9 songs',
-      icon: 'compact disc'
-    },
-  ];
+
+  const { count, increaseCount } = useContext(CounterButtonContext);
+
+  const [genres, setGenres] = useState([]);
+  // const [count, setCount] = useState(0);
+  // const [count2, setCount2] = useState(0);
+
+  useEffect(() => {
+    // const filteredGenres = theGenres.filter(
+    //   (g) => g.description >= 5
+    // );
+
+    console.log('count1', count);
+
+    // setGenres(theGenres);
+
+    // return () => {
+    //   console.log('disconnected');
+    // };
+
+  }, [count]);
+
+  // useEffect(() => {
+  //   console.log('count2', count2);
+  // }, [count2]);
 
   return (
     <div className="ui container">
+      <button onClick={increaseCount}>{count}</button>
+      {/* <button onClick={() => setCount2(count2 + 1)}>{count2}</button> */}
       <h1>My Playlists</h1>
       <div className="ui stackable two column grid">
         <div className="ui six wide column">
