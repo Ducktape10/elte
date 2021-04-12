@@ -1,17 +1,29 @@
 import { useContext, useEffect } from "react";
+import { connect, useDispatch, useStore } from "react-redux";
 import { CounterButtonContext } from "../providers/CounterButtonProvider";
+import { changeText, multiplyNumber } from "../redux/actions/testAction";
 import Field from "../ui/Field"
 
-const IndexView = () => {
+const IndexView = ({ test }) => {
 
   const { count, increaseCount } = useContext(CounterButtonContext);
+  const dispatch = useDispatch();
+  const store = useStore();
 
   useEffect(() => {
-    console.log(count);
-  }, [count]);
+    // console.log(count);
+    console.log(store.getState());
+  }, [store]);
+
+  const changeT = () => {
+    // dispatch(changeText('changed'));
+    dispatch(multiplyNumber(2));
+  };
 
   return (
     <div className="ui center aligned container">
+    <h1>{test?.number}</h1>
+    <button onClick={changeT}>Teszt</button>
       <h1>My Playlist App</h1>
       <p>Welcome to MPA. To use this awesome piece of software you must log in.</p>
       <div className="ui segment">
@@ -36,4 +48,8 @@ const IndexView = () => {
   );
 };
 
-export default IndexView;
+const mapStateToProps = (state) => ({
+  test: state.test
+});
+
+export default connect(mapStateToProps)(IndexView);;
