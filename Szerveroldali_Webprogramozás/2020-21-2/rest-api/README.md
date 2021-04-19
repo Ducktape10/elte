@@ -1,0 +1,1 @@
+Az asszociácóknál az volt a probléma, hogy elrontottam az export-ot :c
