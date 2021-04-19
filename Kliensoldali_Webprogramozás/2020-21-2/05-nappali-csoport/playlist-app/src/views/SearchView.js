@@ -1,13 +1,12 @@
 import SongTableRow from "../ui/SongTableRow";
-import { playlists } from "../utils/playlists";
 
 const SearchView = () => {
 
-  const songs = playlists.Classics;
+  // const songs = playlists.Classics;
 
   return (
     <div className="ui container">
-      <div className="ui fluid icon input">
+      {/* <div className="ui fluid icon input">
         <input type="text" placeholder="Search for an artist or title..." />
         <i className="search icon"></i>
       </div>
@@ -32,7 +31,7 @@ const SearchView = () => {
             )}
           </tbody>
         </table>
-      </div>
+      </div> */}
     </div>
   );
 };

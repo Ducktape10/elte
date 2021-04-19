@@ -1,10 +1,12 @@
 import { useContext, useEffect } from "react";
-import { connect, useDispatch, useStore } from "react-redux";
+import { connect, useDispatch, useSelector, useStore } from "react-redux";
 import { CounterButtonContext } from "../providers/CounterButtonProvider";
 import { changeText, multiplyNumber } from "../redux/actions/testAction";
 import Field from "../ui/Field"
 
-const IndexView = ({ test }) => {
+const IndexView = () => {
+
+  const test = useSelector((state) => state.test);
 
   const { count, increaseCount } = useContext(CounterButtonContext);
   const dispatch = useDispatch();
@@ -48,8 +50,10 @@ const IndexView = ({ test }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  test: state.test
-});
+// const mapStateToProps = (state) => ({
+//   test: state.test
+// });
 
-export default connect(mapStateToProps)(IndexView);;
+// export default connect(mapStateToProps)(IndexView);
+
+export default IndexView;

@@ -1,6 +1,9 @@
 import { useContext, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { CounterButtonContext } from "../providers/CounterButtonProvider";
+import { getPlaylistsByGenre } from "../redux/actions/playlistAction";
 import Modal from "../ui/Modal";
+import NewPlaylistModal from "../ui/NewPlaylistModal";
 import PlaylistItem from "../ui/PlaylistItem";
 import Playlists from "../ui/PlayLists";
 import SongInfo from "../ui/SongInfo";
@@ -8,9 +11,14 @@ import { theGenres } from '../utils/genres';
 
 const PlaylistView = () => {
 
+  const [songInfo, genres] = useSelector((state) => [state.songInfo, state.genres]);
+  // const genres = useSelector((state) => state.genres);
+  const dispatch = useDispatch();
+
   const { count, increaseCount } = useContext(CounterButtonContext);
 
-  const [genres, setGenres] = useState([]);
+  const [isNewPlaylistModalOpen, setIsNewPlaylistModalOpen] = useState(false);
+  const [theGenre, setTheGenre] = useState('Classics');
   // const [count, setCount] = useState(0);
   // const [count2, setCount2] = useState(0);
 
@@ -43,8 +51,11 @@ const PlaylistView = () => {
           <h3>Playlists</h3>
           <div className="ui very relaxed selection list">
             {genres.map(
-              (playlistItem, i) => <PlaylistItem header={playlistItem.header} description={playlistItem.description} key={`playlistitem-${i}`} />
+              (genre, i) => <h1 onClick={() => setTheGenre(genre)}>{genre}</h1>
             )}
+            {/* {genres.map(
+              (playlistItem, i) => <PlaylistItem header={playlistItem.header} description={playlistItem.description} key={`playlistitem-${i}`} />
+            )} */}
           </div>
         </div>
       </div>
@@ -52,18 +63,17 @@ const PlaylistView = () => {
       <div className="item" id="newPlaylist">
         <i className="large green plus middle aligned icon"></i>
         <div className="content">
-          <a className="header" href="TMP">New</a>
+          <button className="header" onClick={() => setIsNewPlaylistModalOpen(true)}>New</button>
           <div className="description">Create a new playlist</div>
         </div>
       </div>
 
-      <Playlists genre="Classics" />
+      <Playlists genre={theGenre} />
 
       <div className="ui divider"></div>
       <SongInfo
         song={{
-          name: 'It\'s my life',
-          author: 'Bon Jovi',
+          ...songInfo,
           length: '4:35'
         }}
         image="assets/bonjovi.jpg"
@@ -72,7 +82,7 @@ const PlaylistView = () => {
         lyricsLink="https://www.azlyrics.com/lyrics/bonjovi/itsmylife.html"
       />
 
-      <Modal />
+      <NewPlaylistModal open={isNewPlaylistModalOpen} setOpen={setIsNewPlaylistModalOpen} />
 
     </div>
   );
