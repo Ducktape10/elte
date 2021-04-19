@@ -1,17 +1,27 @@
 import { useContext, useEffect } from "react";
+import { useDispatch, useStore } from "react-redux";
 import { CounterContext } from "../example/CounterProvider";
-import Field from "../ui/Field"
+import { changeAnimalName } from "../redux/actions/TestAction";
+import Field from "../ui/Field";
+import { connect } from 'react-redux';
 
-const IndexView = () => {
+const IndexView = ({ test }) => {
   // const { counter, increaseCounter } = useContext(CounterContext);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   console.log(counter);
-  // }, [counter]);
+  useEffect(() => {
+    // console.log(counter);
+
+  }, []);
+
+  const changeHText = () => {
+    dispatch(changeAnimalName('cat'));
+  };
 
   return (
     <div className="ui center aligned container">
-    {/* <button onClick={increaseCounter}>+1</button> */}
+      <h1>{test.animal}</h1>
+    <button onClick={changeHText}>change</button>
       <h1>My Playlist App</h1>
       <p>Welcome to MPA. To use this awesome piece of software you must log in.</p>
       <div className="ui segment">
@@ -36,4 +46,8 @@ const IndexView = () => {
   );
 };
 
-export default IndexView;
+const mapStateToProps = (state) => ({
+  test: state.test
+});
+
+export default connect(mapStateToProps)(IndexView);
