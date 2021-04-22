@@ -1,21 +1,29 @@
 import { useContext } from "react";
+import { useDispatch } from "react-redux";
 import { SongContext } from "../providers/SongProvider";
+import { changeSong } from "../redux/actions/SongAction";
 
 const PlaylistItem = ({ icon, header, description, isActive, handleClick }) => {
 
-  const { currentSong, setCurrentSong } = useContext(SongContext);
+  const dispatch  = useDispatch();
+  // const { currentSong, setCurrentSong } = useContext(SongContext);
 
   const handleClickLocally = () => {
 
-    setCurrentSong({
-      ...currentSong,
-      song: {
-        name: header,
-        author: description
-      }
-    });
+    // setCurrentSong({
+    //   ...currentSong,
+    //   song: {
+    //     name: header,
+    //     author: description
+    //   }
+    // });
 
-    console.log(currentSong);
+    dispatch(changeSong({
+      name: header,
+      author: description
+    }));
+
+    // console.log(currentSong);
     handleClick();
   };
 

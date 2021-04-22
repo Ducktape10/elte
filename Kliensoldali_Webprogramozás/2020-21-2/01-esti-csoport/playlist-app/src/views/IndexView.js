@@ -1,11 +1,13 @@
 import { useContext, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch, useStore } from "react-redux";
 import { CounterContext } from "../example/CounterProvider";
 import { changeAnimalName } from "../redux/actions/TestAction";
 import Field from "../ui/Field";
-import { connect } from 'react-redux';
 
-const IndexView = ({ test }) => {
+const IndexView = () => {
+  const test = useSelector((state) => state.test);
+
   // const { counter, increaseCounter } = useContext(CounterContext);
   const dispatch = useDispatch();
 
@@ -46,8 +48,4 @@ const IndexView = ({ test }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  test: state.test
-});
-
-export default connect(mapStateToProps)(IndexView);
+export default IndexView;

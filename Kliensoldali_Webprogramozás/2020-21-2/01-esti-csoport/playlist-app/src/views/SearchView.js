@@ -1,10 +1,11 @@
 import { useContext, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { CounterContext } from "../example/CounterProvider";
 import SongTableRow from "../ui/SongTableRow";
-import { playlists } from "../utils/playlists";
 
 const SearchView = () => {
   // const { counter, increaseCounter } = useContext(CounterContext);
+  const playlists = useSelector((state) => state.playlists);
   const songs = playlists.Classics;
 
   // useEffect(() => {

@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { playlists } from "../utils/playlists";
+import { useSelector } from "react-redux";
 import PlaylistItem from "./PlaylistItem";
 
 const Playlists = ({ genre }) => {
+
+  const playlists = useSelector((state) => state.playlists);
 
   const playlistItems = playlists[genre];
   const [activeSong, setActiveSong] = useState();
