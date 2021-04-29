@@ -39,6 +39,29 @@ const playlistReducer = (state = initialState, action) => {
     theState[genre] = [playlist];
 
     return theState;
+  } else if (action.type === 'MODIFY_PLAYLIST') {
+    const { oldHeader, header, description, genre } = action.payload;
+
+    if (!theState[genre]) {
+      console.log('pls nem jó a műfaj :c');
+      return state;
+    }
+
+    const ind = theState[genre].findIndex(
+      (song) => song.header === oldHeader
+    );
+
+    if (ind === -1) {
+      console.log('át akarsz verni :c');
+      return state;
+    }
+
+    theState[genre][ind] = {
+      ...theState[genre][ind],
+      ...action.payload
+    };
+
+    return theState;
   }
 
 

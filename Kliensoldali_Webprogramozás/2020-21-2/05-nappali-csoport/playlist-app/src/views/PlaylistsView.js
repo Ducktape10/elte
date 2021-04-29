@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CounterButtonContext } from "../providers/CounterButtonProvider";
 import { getPlaylistsByGenre } from "../redux/actions/playlistAction";
 import Modal from "../ui/Modal";
+import EditPlaylistModal from "../ui/EditPlaylistModal";
 import NewPlaylistModal from "../ui/NewPlaylistModal";
 import PlaylistItem from "../ui/PlaylistItem";
 import Playlists from "../ui/PlayLists";
@@ -18,6 +19,7 @@ const PlaylistView = () => {
   const { count, increaseCount } = useContext(CounterButtonContext);
 
   const [isNewPlaylistModalOpen, setIsNewPlaylistModalOpen] = useState(false);
+  const [isEditPlaylistModalOpen, setIsEditPlaylistModalOpen] = useState(false);
   const [theGenre, setTheGenre] = useState('Classics');
   // const [count, setCount] = useState(0);
   // const [count2, setCount2] = useState(0);
@@ -68,7 +70,7 @@ const PlaylistView = () => {
         </div>
       </div>
 
-      <Playlists genre={theGenre} />
+      <Playlists genre={theGenre} setIsEditPlaylistModalOpen={setIsEditPlaylistModalOpen} />
 
       <div className="ui divider"></div>
       <SongInfo
@@ -83,6 +85,7 @@ const PlaylistView = () => {
       />
 
       <NewPlaylistModal open={isNewPlaylistModalOpen} setOpen={setIsNewPlaylistModalOpen} />
+      <EditPlaylistModal open={isEditPlaylistModalOpen} setOpen={setIsEditPlaylistModalOpen} />
 
     </div>
   );

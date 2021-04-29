@@ -2,6 +2,7 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
+import catReducer from './reducers/catReducer';
 import genresReducer from './reducers/genresReducer';
 import playlistReducer from './reducers/playlistReducer';
 import songInfoReducer from './reducers/songInfoReducer';
@@ -11,7 +12,8 @@ const reducers = combineReducers({
   test: testReducer,
   playlists: playlistReducer,
   songInfo: songInfoReducer,
-  genres: genresReducer
+  genres: genresReducer,
+  cat: catReducer
 });
 
 const logger = createLogger({

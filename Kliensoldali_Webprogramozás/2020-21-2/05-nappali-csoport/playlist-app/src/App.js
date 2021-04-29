@@ -3,6 +3,7 @@ import CounterButton from "./ui/CounterButton";
 import IndexView from "./views/IndexView";
 import PlaylistView from "./views/PlaylistsView";
 import SearchView from "./views/SearchView";
+import EasterEggView from "./views/EasterEggView";
 
 import {
   BrowserRouter as Router,
@@ -19,6 +20,9 @@ function App() {
       <Navbar />
       <Switch>
         <CounterButtonProvider>
+        <Route path='/cat' exact>
+          <EasterEggView />
+        </Route>
           <Route path='/' exact>
             <IndexView />
           </Route>

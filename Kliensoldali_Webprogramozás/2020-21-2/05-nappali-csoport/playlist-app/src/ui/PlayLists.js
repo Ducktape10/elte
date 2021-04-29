@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeSongInfo } from "../redux/actions/songInfoAction";
 import PlaylistItem from "./PlaylistItem";
 
-const Playlists = ({ genre }) => {
+const Playlists = ({ genre, setIsEditPlaylistModalOpen }) => {
 
   const playlists = useSelector((state) => state.playlists);
   const dispatch = useDispatch();
@@ -39,6 +39,7 @@ const Playlists = ({ genre }) => {
                               description={playlistItem.description}
                               isActive={isSelected(playlistItem)}
                               handleClick={() => selectSong(playlistItem)}
+                              setIsEditPlaylistModalOpen={setIsEditPlaylistModalOpen}
                               icon="music"
                             />
         )}

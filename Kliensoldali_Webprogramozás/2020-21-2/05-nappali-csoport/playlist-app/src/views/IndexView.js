@@ -6,7 +6,7 @@ import Field from "../ui/Field"
 
 const IndexView = () => {
 
-  const test = useSelector((state) => state.test);
+  const [test, cat] = useSelector((state) => [state.test, state.cat]);
 
   const { count, increaseCount } = useContext(CounterButtonContext);
   const dispatch = useDispatch();
@@ -25,6 +25,10 @@ const IndexView = () => {
   return (
     <div className="ui center aligned container">
     <h1>{test?.number}</h1>
+    {cat.id ?
+      <h1>{'megtaláltad az easter egget!'}</h1> :
+      null
+    }
     <button onClick={changeT}>Teszt</button>
       <h1>My Playlist App</h1>
       <p>Welcome to MPA. To use this awesome piece of software you must log in.</p>
