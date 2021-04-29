@@ -5,11 +5,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import TestReducer from './reducers/TestReducer';
 import SongReducer from './reducers/SongReducer';
 import PlaylistsReducer from './reducers/PlaylistsReducer';
+import CatReducer from './reducers/CatReducer';
 
 const reducers = combineReducers({
   test: TestReducer,
   song: SongReducer,
-  playlists: PlaylistsReducer
+  playlists: PlaylistsReducer,
+  cat: CatReducer
 });
 
 const logger = createLogger({

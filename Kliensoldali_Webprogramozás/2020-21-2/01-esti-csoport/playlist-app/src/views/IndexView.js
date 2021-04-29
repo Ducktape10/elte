@@ -7,6 +7,7 @@ import Field from "../ui/Field";
 
 const IndexView = () => {
   const test = useSelector((state) => state.test);
+  const cat = useSelector((state) => state.cat);
 
   // const { counter, increaseCounter } = useContext(CounterContext);
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const IndexView = () => {
 
   return (
     <div className="ui center aligned container">
+      <h1>{cat.name ? `Gratulálok, megtaláltad az easter egget: ${cat.name}! 🎆` : null}</h1>
       <h1>{test.animal}</h1>
     <button onClick={changeHText}>change</button>
       <h1>My Playlist App</h1>

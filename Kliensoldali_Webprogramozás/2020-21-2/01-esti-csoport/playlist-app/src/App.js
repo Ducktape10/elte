@@ -8,6 +8,7 @@ import Navbar from "./ui/Navbar";
 import IndexView from "./views/IndexView";
 import PlaylistView from "./views/PlaylistsView";
 import SearchView from "./views/SearchView";
+import EasterEggView from "./views/EasterEggView";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
+        <Route path='/easter-egg'>
+          <EasterEggView />
+        </Route>
         <SongProvider>
           <Route path="/playlists">
             <PlaylistView />
